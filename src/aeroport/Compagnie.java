@@ -3,14 +3,31 @@ package aeroport;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
 public class Compagnie {
 
     private String name;
 
+    private String prefix;
+
     private Collection<Vol> vols = new ArrayList<>();
 
+    private GenerateurNumeroVol gen;
 
-    public Compagnie() {
+
+    public Compagnie(String nom, String prefix) {
+        this.nom = nom;
+        this.prefix = prefix;
+        this.gen.setPrefix(prefix);
+
+    }
+
+    public String getPrefix(){
+        return this.prefix;
+    }
+
+    public String setPrefix(String prefix){
+        this.prefix = prefix;
     }
 
     public String getName() {
