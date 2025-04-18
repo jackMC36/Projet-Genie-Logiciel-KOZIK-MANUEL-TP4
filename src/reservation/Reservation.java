@@ -38,18 +38,17 @@ public class Reservation {
     }
 
     public void payer(){
-
+        client.debiter(this.prix);
     }
 
     public void annuler(){
-    
+        
     }
 
     public void confirmer(){
-
+        vol.reserver();
     }
 
     public void rembourser(){
-
     }
 }

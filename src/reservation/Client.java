@@ -15,12 +15,16 @@ public class Client{
     public String getNom() {
         return nom;
     }
-    
-    public void debiter(int montant){
-        
+
+    public void debiter(float montant){
+        if (montant <= infoBanquaire.getSolde()) {
+            infoBanquaire.debiter(montant);
+        } else {
+            System.out.println("Fonds insuffisants");
+        }
     }
 
     public void crediter(int montant){
-
+        infoBanquaire.crediter(montant);
     }
 }
