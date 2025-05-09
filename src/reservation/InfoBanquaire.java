@@ -6,13 +6,28 @@ public class InfoBanquaire {
     private final String codeBanque;
     private final String codeGuichet;
     private final String cleRib;
+    private int solde;
 
-    public InfoBanquaire(String nomBanque, String numeroCompte, String codeBanque, String codeGuichet, String cleRib) {
+    public InfoBanquaire(String nomBanque, String numeroCompte, String codeBanque, String codeGuichet, String cleRib, int solde) {
         this.nomBanque = nomBanque;
         this.numeroCompte = numeroCompte;
         this.codeBanque = codeBanque;
         this.codeGuichet = codeGuichet;
         this.cleRib = cleRib;
+        this.solde = solde;
+
+    }
+
+    public void debiter(float montant) {
+        if (montant <= solde) {
+            solde -= montant;
+        } else {
+            System.out.println("Fonds insuffisants");
+        }
+    }
+
+    public void crediter(float montant) {
+        solde += montant;
     }
 
     public String getNomBanque() {
@@ -33,6 +48,10 @@ public class InfoBanquaire {
 
     public String getCleRib() {
         return cleRib;
+    }
+
+    public int getSolde() {
+        return solde;
     }
     
 }
