@@ -43,7 +43,7 @@ public class Reservation {
     }
 
     public void annuler(){
-        vol.annuler();
+        vol.annulerReservation();
     }
 
     public void confirmer(){

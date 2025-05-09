@@ -3,6 +3,7 @@ package aeroport;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.time.ZonedDateTime;
 
 
 public class Vol {
@@ -18,6 +19,10 @@ public class Vol {
     private ZoneDateTime dateDepart;
 
     private ZoneDateTime dateArrivee;
+
+    private int placesReservees;
+
+    private int capacite;
 
     public Duration obtenirDuree() {
         if(this.dateDepart != null && this.dateArrivee != null) {
@@ -97,6 +102,26 @@ public class Vol {
             return ((Vol) obj).getNumero().equals(this.numero);
         } catch (Exception e){
             return false;
+        }
+    }
+
+    public synchronized void annulerReservation() {
+        if (placesReservees > 0) {
+            placesReservees--;
+        } else {
+            System.out.println("Aucune place réservée à annuler.");
+        }
+    }
+
+    public boolean estReservable() {
+        return placesReservees < capacite;
+    }
+
+    public synchronized void reserver() {
+        if (estReservable()) {
+            placesReservees++;
+        } else {
+            System.out.println("Aucune place disponible.");
         }
     }
 }
