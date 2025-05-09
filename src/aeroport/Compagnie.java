@@ -26,7 +26,7 @@ public class Compagnie {
         return this.prefix;
     }
 
-    public String setPrefix(String prefix){
+    public void setPrefix(String prefix){
         this.prefix = prefix;
     }
 
