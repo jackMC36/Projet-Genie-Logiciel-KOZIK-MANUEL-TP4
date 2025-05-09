@@ -18,6 +18,11 @@ public class Vol {
     private ZonedDateTime dateDepart;
 
     private ZonedDateTime dateArrivee;
+
+    private int placesReservees;
+
+    private int capacite;
+
     public Duration obtenirDuree() {
         if(this.dateDepart != null && this.dateArrivee != null) {
             return Duration.between(dateDepart, dateArrivee);
@@ -97,6 +102,26 @@ public class Vol {
             return ((Vol) obj).getNumero().equals(this.numero);
         } catch (Exception e){
             return false;
+        }
+    }
+
+    public boolean estReservable(){
+        return placesReservees < capacite;
+    }
+
+    public synchronized void reserver(){
+        if(!estReservable()){
+            throw new IllegalStateException();
+        }
+        placesReservees++;
+    }
+
+    public synchronized void annuler(){
+        if(placesReservees > 0){
+            placesReservees --;
+        }
+        else{
+            throw new IllegalStateException("Aucune Reservation à annuler");
         }
     }
 }
