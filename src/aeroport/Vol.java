@@ -1,9 +1,8 @@
 package aeroport;
 
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.time.ZonedDateTime;
+
 
 
 public class Vol {
@@ -19,33 +18,29 @@ public class Vol {
     private ZonedDateTime dateDepart;
 
     private ZonedDateTime dateArrivee;
-
-    private int placesReservees;
-
-    private int capacite;
-
     public Duration obtenirDuree() {
         if(this.dateDepart != null && this.dateArrivee != null) {
-            return Duration.of(dateArrivee.getTime() - dateDepart.getTime(), ChronoUnit.MILLIS);
+            return Duration.between(dateDepart, dateArrivee);
         }
         return null;
     }
 
-    public Date getDateDepart() {
+    public ZonedDateTime getDateDepart() {
         return dateDepart;
     }
 
-    public void setDateDepart(Date dateDepart) {
+    public void setDateDepart(ZonedDateTime dateDepart) {
         this.dateDepart = dateDepart;
     }
 
-    public Date getDateArrivee() {
+    public ZonedDateTime getDateArrivee() {
         return dateArrivee;
     }
 
-    public void setDateArrivee(Date dateArrivee) {
+    public void setDateArrivee(ZonedDateTime dateArrivee) {
         this.dateArrivee = dateArrivee;
     }
+
 
     public Vol() {
     }
@@ -102,26 +97,6 @@ public class Vol {
             return ((Vol) obj).getNumero().equals(this.numero);
         } catch (Exception e){
             return false;
-        }
-    }
-
-    public synchronized void annulerReservation() {
-        if (placesReservees > 0) {
-            placesReservees--;
-        } else {
-            System.out.println("Aucune place réservée à annuler.");
-        }
-    }
-
-    public boolean estReservable() {
-        return placesReservees < capacite;
-    }
-
-    public synchronized void reserver() {
-        if (estReservable()) {
-            placesReservees++;
-        } else {
-            System.out.println("Aucune place disponible.");
         }
     }
 }
