@@ -4,7 +4,6 @@ public class GenerateurNumeroVol {
     private String prefix;
     private long compteur = 0;
 
-    //constructeur
     public GenerateurNumeroVol(String prefix, long compteur){
         this.compteur = compteur;
         this.prefix = prefix;
