@@ -116,7 +116,7 @@ public class Vol {
         placesReservees++;
     }
 
-    public synchronized void annuler(){
+    public synchronized void annulerReservation(){
         if(placesReservees > 0){
             placesReservees --;
         }
