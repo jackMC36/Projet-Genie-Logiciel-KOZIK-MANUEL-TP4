@@ -12,7 +12,7 @@ public class Reservation {
     private final Vol vol;
     private final Passager passager;
 
-    public Reservation(Client client, ZonedDateTime date, float prix, Vol vol, Passager passager) {
+    private Reservation(Client client, ZonedDateTime date, float prix, Vol vol, Passager passager) {
         this.client = client;
         this.date = date;
         this.prix = prix;
@@ -20,18 +20,19 @@ public class Reservation {
         this.passager = passager;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public static Reservation create(Client client, ZonedDateTime date, float prix, Vol vol, Passager passager) {
+    public static synchronized Reservation create(Client client, ZonedDateTime date, float prix, Vol vol, Passager passager) {
         if(vol.estReservable()){
-             return new Reservation(client, date, prix, vol, passager);
+            return new Reservation(client, date, prix, vol, passager);
         }
         else{
             throw new IllegalArgumentException("Le vol n'est pas reservable");
         }
     }
+
+    public Client getClient() {
+        return client;
+    }
+
 
     public ZonedDateTime getDate() {
         return date;
@@ -42,7 +43,7 @@ public class Reservation {
     }
 
     public void annuler(){
-        
+        vol.annuler();
     }
 
     public void confirmer(){
@@ -50,5 +51,6 @@ public class Reservation {
     }
 
     public void rembourser(){
+        client.crediter((int)this.prix);
     }
 }

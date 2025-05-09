@@ -1,8 +1,8 @@
 package reservation;
 
 public class User {
-    private static String login;
-    private static String motDePasse;
+    private final String login;
+    private final String motDePasse;
 
 
     public User(String l, String mdp){
@@ -10,9 +10,11 @@ public class User {
         this.motDePasse = mdp;
     }
 
-    private String getLogin(){
+    public String getLogin(){
         return this.login;
     }
 
-    
+    public User getUser(){
+        return this;
+    }
 }
