@@ -5,7 +5,8 @@ public class GenerateurNumeroVol {
     private long compteur = 0;
 
     //constructeur
-    public generateurNumeroVol(String prefix){
+    public GenerateurNumeroVol(String prefix, long compteur){
+        this.compteur = compteur;
         this.prefix = prefix;
     }
 
@@ -15,7 +16,7 @@ public class GenerateurNumeroVol {
 
     protected NumeroVol generate(){
         this.compteur+=1;
-        return prefix+this.compteur;
+        return new NumeroVol(prefix + this.compteur);
     }
 
 }

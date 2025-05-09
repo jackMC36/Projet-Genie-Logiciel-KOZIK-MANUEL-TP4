@@ -16,9 +16,9 @@ public class Vol {
 
     private Compagnie compagnie;
 
-    private ZoneDateTime dateDepart;
+    private ZonedDateTime dateDepart;
 
-    private ZoneDateTime dateArrivee;
+    private ZonedDateTime dateArrivee;
 
     private int placesReservees;
 

@@ -28,7 +28,7 @@ public class NumeroVol implements Comparable<NumeroVol>{
 
         NumeroVol other = (NumeroVol) obj;
         if(numero!=null){
-            return numero != null ? numero.equals(other.numero) 
+            return numero != null ? numero.equals(other.numero);
         }
         else{
             return other.numero == null;

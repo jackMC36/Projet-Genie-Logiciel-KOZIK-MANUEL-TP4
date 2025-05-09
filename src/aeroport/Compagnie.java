@@ -16,17 +16,19 @@ public class Compagnie {
 
 
     public Compagnie(String nom, String prefix) {
-        this.nom = nom;
+        this.name = nom;
         this.prefix = prefix;
         this.gen.setPrefix(prefix);
 
     }
 
+    public Compagnie(){}
+
     public String getPrefix(){
         return this.prefix;
     }
 
-    public String setPrefix(String prefix){
+    public void setPrefix(String prefix){
         this.prefix = prefix;
     }
 
