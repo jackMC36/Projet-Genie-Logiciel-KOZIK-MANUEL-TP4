@@ -1,39 +1,56 @@
 package reservation;
 
-// Classe représentant un utilisateur avec un login et un mot de passe.
+/**
+ * Classe représentant un utilisateur dans le système
+ */
 public class User {
-    // Attributs privés pour garantir l'encapsulation.
-    private final String login; // Le login de l'utilisateur.
-    private final String motDePasse; // Le mot de passe de l'utilisateur.
-
+    private final String email;
+    private String password;
+    private final String telephone;
+    
     /**
-     * Constructeur de la classe User.
-     * Initialise un utilisateur avec un login et un mot de passe.
-     *
-     * @param l Le login de l'utilisateur.
-     * @param mdp Le mot de passe de l'utilisateur.
+     * Constructeur de la classe User
+     * 
+     * @param email L'adresse email de l'utilisateur
+     * @param password Le mot de passe de l'utilisateur
+     * @param telephone Le numéro de téléphone de l'utilisateur
      */
-    public User(String l, String mdp) {
-        this.login = l;
-        this.motDePasse = mdp;
+    public User(String email, String password, String telephone) {
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
     }
-
+    
     /**
-     * Retourne le login de l'utilisateur.
-     *
-     * @return Le login de l'utilisateur.
+     * Retourne l'adresse email de l'utilisateur
+     * 
+     * @return L'adresse email
      */
-    public String getLogin() {
-        return this.login;
+    public String getEmail() {
+        return email;
     }
-
+    
     /**
-     * Retourne l'instance actuelle de l'utilisateur.
-     * Cette méthode semble redondante, car elle retourne simplement l'objet lui-même.
-     *
-     * @return L'instance actuelle de l'utilisateur.
+     * Permet de modifier le mot de passe de l'utilisateur
+     * 
+     * @param oldPassword L'ancien mot de passe pour vérification
+     * @param newPassword Le nouveau mot de passe
+     * @return true si le mot de passe a été modifié, false sinon
      */
-    public User getUser() {
-        return this;
+    public boolean changePassword(String oldPassword, String newPassword) {
+        if (this.password.equals(oldPassword)) {
+            this.password = newPassword;
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Retourne le numéro de téléphone de l'utilisateur
+     * 
+     * @return Le numéro de téléphone
+     */
+    public String getTelephone() {
+        return telephone;
     }
 }

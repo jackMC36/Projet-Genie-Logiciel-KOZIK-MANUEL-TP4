@@ -1,23 +1,41 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply plugin: 'java'
-apply plugin: 'application'
-
-application {
-    mainClass='Start'
+plugins {
+    id 'java'
+    id 'application'
 }
-
 
 repositories {
     mavenCentral()
 }
 
-jar {
- manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': '1.0.0',
-                   'Main-Class': 'Start'
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src']
+        }
     }
 }
 
-sourceSets.main.java.srcDirs = ['src']
-sourceSets.test.java.srcDirs = ['src']
+application {
+    // Set the main class that contains your main method
+    mainClass = 'Start'
+}
+
+// If your code is using a specific Java version, specify it
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+// For running tests
+test {
+    useJUnit()
+}

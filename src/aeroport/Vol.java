@@ -237,4 +237,11 @@ public class Vol {
     public Collection<Reservation> getReservation(){
         return this.reservations;
     }
+
+    /**
+     * Change la capacite d'un vol
+     */
+    public void setCapacite(int capacite){
+        this.capacite = capacite;
+    }
 }

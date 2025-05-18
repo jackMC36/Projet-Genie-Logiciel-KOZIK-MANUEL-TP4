@@ -13,6 +13,8 @@ public class Reservation {
     private final Vol vol; // Le vol associé à la réservation.
     private final Passager passager; // Le passager associé à la réservation.
 
+
+
     /**
      * Constructeur privé de la classe Reservation.
      * Initialise une réservation avec les informations fournies.

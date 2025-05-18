@@ -2,7 +2,7 @@ package reservation;
 
 // Classe représentant les informations bancaires d'un client.
 public class InfoBanquaire {
-    // Attributs privés pour garantir l'encapsulation.
+
     private final String nomBanque; // Le nom de la banque.
     private final String numeroCompte; // Le numéro de compte bancaire.
     private final String codeBanque; // Le code de la banque.
@@ -111,4 +111,6 @@ public class InfoBanquaire {
     public int getSolde() {
         return solde;
     }
+
+    
 }

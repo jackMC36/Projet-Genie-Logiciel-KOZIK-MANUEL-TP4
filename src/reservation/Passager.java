@@ -1,53 +1,68 @@
 package reservation;
 
-import java.util.Date;
-
-// Classe représentant un passager avec un nom, une date de naissance et une pièce d'identité.
+/**
+ * Classe représentant un passager avec une pièce d'identité
+ */
 public class Passager {
-
-    // Attributs privés pour garantir l'encapsulation.
-    private final String nom; // Le nom du passager.
-    private final Date dateNaissance; // La date de naissance du passager.
-    private final PieceIdentite pieceIdentite; // La pièce d'identité du passager.
-
+    
+    private PieceIdentite pieceIdentite;
+    
     /**
-     * Constructeur de la classe Passager.
-     * Initialise un passager avec un nom, une date de naissance et une pièce d'identité.
-     *
-     * @param nom Le nom du passager.
-     * @param dateNaissance La date de naissance du passager.
-     * @param pieceIdentite La pièce d'identité du passager.
+     * Constructeur de la classe Passager
+     * 
+     * @param pieceIdentite La pièce d'identité du passager
      */
-    public Passager(String nom, Date dateNaissance, PieceIdentite pieceIdentite) {
-        this.nom = nom;
-        this.dateNaissance = dateNaissance;
+    public Passager(PieceIdentite pieceIdentite) {
         this.pieceIdentite = pieceIdentite;
     }
-
+    
     /**
-     * Retourne le nom du passager.
-     *
-     * @return Le nom du passager.
-     */
-    public String getNom() {
-        return nom;
-    }
-
-    /**
-     * Retourne la date de naissance du passager.
-     *
-     * @return La date de naissance du passager.
-     */
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    /**
-     * Retourne la pièce d'identité du passager.
-     *
-     * @return La pièce d'identité du passager.
+     * Obtient la pièce d'identité du passager
+     * 
+     * @return La pièce d'identité du passager
      */
     public PieceIdentite getPieceIdentite() {
         return pieceIdentite;
+    }
+    
+    /**
+     * Obtient le nom du passager depuis sa pièce d'identité
+     * 
+     * @return Le nom du passager
+     */
+    public String getNom() {
+        return pieceIdentite.getNom();
+    }
+    
+    /**
+     * Obtient le prénom du passager depuis sa pièce d'identité
+     * 
+     * @return Le prénom du passager
+     */
+    public String getPrenom() {
+        return pieceIdentite.getPrenom();
+    }
+    
+    /**
+     * Obtient le numéro d'identification du passager depuis sa pièce d'identité
+     * 
+     * @return Le numéro d'identification du passager
+     */
+    public String getNumeroIdentification() {
+        return pieceIdentite.getNumeroIdentite();
+    }
+    
+    /**
+     * Retourne une représentation textuelle du passager
+     * 
+     * @return Une chaîne de caractères représentant le passager
+     */
+    @Override
+    public String toString() {
+        return "Passager{" +
+                "nom='" + getNom() + '\'' +
+                ", prenom='" + getPrenom() + '\'' +
+                ", numeroIdentification='" + getNumeroIdentification() + '\'' +
+                '}';
     }
 }

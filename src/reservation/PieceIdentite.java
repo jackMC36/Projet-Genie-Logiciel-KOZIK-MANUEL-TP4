@@ -89,4 +89,30 @@ public class PieceIdentite {
                 ", dateNaissance=" + dateNaissance +
                 '}';
     }
+
+    /**
+     * Méthode utilitaire pour vérifier l'identité d'un passager
+     * 
+     * @param passager Le passager à vérifier
+     * @param pieceIdentite La pièce d'identité à vérifier
+     */
+    public static void verifierIdentite(Passager passager, PieceIdentite pieceIdentite) {
+        PieceIdentite passagerPiece = passager.getPieceIdentite();
+        boolean idMatch = passagerPiece.getNumeroIdentite().equals(pieceIdentite.getNumeroIdentite());
+        boolean nomMatch = passagerPiece.getNom().equals(pieceIdentite.getNom());
+        boolean prenomMatch = passagerPiece.getPrenom().equals(pieceIdentite.getPrenom());
+        boolean tailleMatch = passagerPiece.getTaille() == pieceIdentite.getTaille();
+        boolean dateMatch = passagerPiece.getDateNaissance().equals(pieceIdentite.getDateNaissance());
+        
+        if (idMatch && nomMatch && prenomMatch && tailleMatch && dateMatch) {
+            System.out.println("Identité vérifiée pour " + passager.getNom() + " " + passager.getPrenom());
+        } else {
+            System.out.println("Échec de vérification d'identité pour " + passager.getNom() + " " + passager.getPrenom());
+            if (!idMatch) System.out.println("   - Numéro d'identification incorrect");
+            if (!nomMatch) System.out.println("   - Nom incorrect");
+            if (!prenomMatch) System.out.println("   - Prénom incorrect");
+            if (!tailleMatch) System.out.println("   - Taille incorrecte");
+            if (!dateMatch) System.out.println("   - Date de naissance incorrecte");
+        }
+    }
 }
