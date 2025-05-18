@@ -2,6 +2,8 @@ import aeroport.Compagnie;
 import aeroport.Vol;
 
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 public class Start {
@@ -11,11 +13,14 @@ public class Start {
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         String dd = "21/10/2020 13:00";
-        String da = "23/10/2020 02:15";
-
+        String da = "21/10/2020 15:00";
         try {
-            volFinal.setDateDepart(format.parse(dd));
-            volFinal.setDateArrivee(format.parse(da));
+            Date dateDepart = format.parse(dd);
+            Date dateArrivee = format.parse(da);
+            ZonedDateTime zonedDateDepart = ZonedDateTime.ofInstant(dateDepart.toInstant(), ZoneId.systemDefault());
+            ZonedDateTime zonedDateArrivee = ZonedDateTime.ofInstant(dateArrivee.toInstant(), ZoneId.systemDefault());
+            volFinal.setDateDepart(zonedDateDepart);
+            volFinal.setDateArrivee(zonedDateArrivee);
         } catch (Exception e){
             throw new RuntimeException("Unable to format to date");
         }

@@ -2,6 +2,10 @@ package aeroport;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import reservation.Reservation;
 
 
 
@@ -22,6 +26,8 @@ public class Vol {
     private int placesReservees;
 
     private int capacite;
+
+    private Collection<Reservation> reservations = new ArrayList<>();
 
     public Duration obtenirDuree() {
         if(this.dateDepart != null && this.dateArrivee != null) {
@@ -50,8 +56,11 @@ public class Vol {
     public Vol() {
     }
 
-    protected Vol(String numero){
+    protected Vol(String numero, Compagnie c){
         this.numero = numero;
+        if(c == null){
+            throw new IllegalArgumentException("Vol non valide, la compagnie ne peut pas être nulle");
+        }
     }
 
     public Compagnie getCompagnie() {
@@ -59,18 +68,13 @@ public class Vol {
     }
 
     public void setCompagnie(Compagnie compagnie) {
-        if(compagnie!=null) {
-            compagnie.addVolWithoutBidirectional(this);
-        }
-        if(this.compagnie!=null){
-            this.compagnie.removeVolWithoutBidirectional(this);
+        if(compagnie == null){
+            throw new IllegalArgumentException("Impossible. La compagnie ne peut pas être null.");
         }
         this.compagnie = compagnie;
     }
 
-    protected void setCompagnieWithoutBidirectional(Compagnie compagnie) {
-        this.compagnie = compagnie;
-    }
+
 
     public String getNumero() {
         return numero;
@@ -123,5 +127,9 @@ public class Vol {
         else{
             throw new IllegalStateException("Aucune Reservation à annuler");
         }
+    }
+
+    public Collection<Reservation> getReservation(){
+        return this.reservations;
     }
 }
