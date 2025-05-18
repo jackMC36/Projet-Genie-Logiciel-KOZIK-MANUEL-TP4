@@ -48,12 +48,23 @@ public class Compagnie {
         this.vols = vols;
     }
 
+    /**
+     * Ajoute un vol à la collection de vols de cette compagnie
+     * Permet d'associer un vol à cette compagnie aérienne
+     * 
+     * @param vol Le vol à ajouter à la collection de la compagnie
+     */
     public void addVol(Vol vol){
         this.vols.add(vol);
     }
 
+    /**
+     * Retire un vol de la collection de vols de cette compagnie
+     * Permet de dissocier un vol de cette compagnie aérienne
+     * 
+     * @param vol Le vol à retirer de la collection de la compagnie
+     */
     public void removeVol(Vol vol){
         this.vols.remove(vol);
     }
-
 }

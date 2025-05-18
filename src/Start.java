@@ -28,12 +28,6 @@ public class Start {
         System.out.println(volFinal.getDateArrivee());
         System.out.println(volFinal.obtenirDuree().toString().substring(2));
 
-
-
-
-
-
-        //Bidirectional
         Vol vol = new Vol();
         vol.setNumero("abc1");
 
